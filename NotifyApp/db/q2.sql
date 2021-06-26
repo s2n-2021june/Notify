@@ -15,5 +15,14 @@ INSERT INTO App_node_health (`app_id`, `node_ip_port`, `service_name`, `COMMENT`
  VALUES
 ('a1', '192.168.0.3:8090', 'sms', '2 of 4 ok', NOW(), 'alive');
 
-SELECT * FROM app_node_health;
+
+INSERT INTO App_node_health (`app_id`, `node_ip_port`, `service_name`, `COMMENT`,  `when`, `event_name`)
+ VALUES
+('a1', '192.168.0.3:8090', 'sms', 'ok', NOW() - 1, 'start');
+
+update App_node_health set `COMMENT` = 'ok' where `app_id`= 'a1' and `event_name` = 'alive';
+
+update App_node_health set `when` = now() where `app_id`= 'a1' and `event_name` = 'alive';
+
+SELECT * FROM App_node_health;
 

@@ -21,11 +21,11 @@ public class AfterStartTasks {
         try {
             System.out.println("Starting run after " + new Date() + ", jdbcTemplate " + jdbcTemplate);
 
-            String sql = "select count(*) FROM app_node_health";
+            String sql = "select count(*) FROM App_node_health";
 
             int cnt = jdbcTemplate.queryForObject(sql, Integer.class) - 2;
             cnt = cnt < 0 ? 0 : cnt;
-            sql = "SELECT * FROM app_node_health LIMIT " + cnt + ", 2;";
+            sql = "SELECT * FROM App_node_health LIMIT " + cnt + ", 2;";
             List<Map<String, Object>> r = query(sql);
             printList(r);
             System.out.println("app status " + new Date() + ",\n\n\n ****\n MariaDb Task Good \n\n ****\n");
@@ -41,7 +41,17 @@ public class AfterStartTasks {
     }
 
     private void printList(List<Map<String, Object>> list) {
+        Object s1 = null;
+        int cnt = 0;
         for (Map<String, Object> m : list) {
+            cnt++;
+            s1 = "Def " + cnt + ".";
+            if(m.containsKey("Id")){
+                s1 = m.get("Id");
+            }else if(m.containsKey("id")){
+                s1 = m.get("id");
+            }
+            System.out.println("\nRow start " + s1 + ":");
             for (String key : m.keySet())
                 System.out.println("Key " + key + ", value :" + m.get(key) + ".");
 
