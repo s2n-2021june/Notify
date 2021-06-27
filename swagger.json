@@ -13,6 +13,12 @@
     "accessCode" : [ "read", "write" ]
   } ],
   "paths" : {
+    "/contact/add" : {
+      "get" : {
+        "summary" : "or update a contact",
+        "description" : "Add 1 responses:\n  '200':\n    description: OK"
+      }
+    },
     "/example" : {
       "get" : {
         "summary" : "Server example operation",
