@@ -24,6 +24,28 @@
         }
       }
     },
+    "/contact/add" : {
+      "post" : {
+        "summary" : "add 1",
+        "description" : "get all",
+        "requestBody" : {
+          "description" : "Optional description in *Markdown*",
+          "required" : true,
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Contact"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
     "/example" : {
       "get" : {
         "summary" : "Server example operation",
