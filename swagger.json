@@ -13,6 +13,17 @@
     "accessCode" : [ "read", "write" ]
   } ],
   "paths" : {
+    "/contact" : {
+      "get" : {
+        "summary" : "Get contacts",
+        "description" : "get all",
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    },
     "/example" : {
       "get" : {
         "summary" : "Server example operation",
