@@ -38,17 +38,6 @@
     }
   },
   "components" : {
-    "schemas" : {
-      "contact" : {
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "integer",
-            "format" : "int64"
-          }
-        }
-      }
-    },
     "securitySchemes" : {
       "accessCode" : {
         "type" : "oauth2",
@@ -60,6 +49,17 @@
               "write" : "allows modifying resources",
               "read" : "allows reading resources"
             }
+          }
+        }
+      }
+    },
+    "schemas" : {
+      "SchemaContac" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
           }
         }
       }
