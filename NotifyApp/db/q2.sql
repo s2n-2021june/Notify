@@ -1,3 +1,7 @@
+CREATE USER 'tushar'@'%' IDENTIFIED BY 'Dk_24MkSuretrain';
+GRANT ALL PRIVILEGES ON *.* TO 'tushar'@'%' ;
+
+
 DROP TABLE IF EXISTS `App_node_health`;
 
 CREATE TABLE IF NOT EXISTS `App_node_health` (

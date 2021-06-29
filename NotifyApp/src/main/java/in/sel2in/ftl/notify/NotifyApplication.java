@@ -38,7 +38,7 @@ public class NotifyApplication {
                 }
             }
         };
-        ///closeTH.start();
+        //closeTH.start();
 
     }
 
