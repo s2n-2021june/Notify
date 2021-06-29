@@ -31,7 +31,7 @@ public class NotifyApplication {
                     } catch (Exception e) {
                         System.err.println("Conf close failed Ctrl-C to stop app at " + new Date() + ", " + e);
                     }
-                    System.out.println("Sys exitt " + new Date());
+                    System.out.println("Sys exit (testing)" + new Date());
                     System.exit(0);
                 } catch (Exception e) {
                     System.err.println("Thread sleep failed Ctrl-C to stop app at" + new Date() + " , " + e);

@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
-//@Document(collection = "issues")
+@Document(collection = "issues")
 public class AppStatus {
     @Id
     private String id;

@@ -17,20 +17,18 @@ public class AfterStartTasks {
 
     @PostConstruct
     private void runAfterSpringInit() {
-
         try {
             System.out.println("Starting run after " + new Date() + ", jdbcTemplate " + jdbcTemplate);
-
             String sql = "select count(*) FROM App_node_health";
-
             int cnt = jdbcTemplate.queryForObject(sql, Integer.class) - 2;
             cnt = cnt < 0 ? 0 : cnt;
             sql = "SELECT * FROM App_node_health LIMIT " + cnt + ", 2;";
             List<Map<String, Object>> r = query(sql);
             printList(r);
-            System.out.println("app status " + new Date() + ",\n\n\n ****\n MariaDb Task Good \n\n ****\n");
+            System.out.println("app status " + new Date() + ",\n\n\n ****\n MariaDb Task Ran okay (2) \n\n ****\n");
         } catch (Exception e) {
             e.printStackTrace();
+			System.out.println("app status " + new Date() + ", Maria Db " + e);
         }
 
     }
