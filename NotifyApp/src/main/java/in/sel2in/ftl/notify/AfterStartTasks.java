@@ -19,7 +19,7 @@ public class AfterStartTasks {
     private void runAfterSpringInit() {
 
         try {
-            System.out.println("Starting run after " + new Date() + ", jdbcTemplate " + jdbcTemplate);
+            System.out.println("Starting run after " + new Date() + ", mappigs " + jdbcTemplate);
 
             String sql = "select count(*) FROM App_node_health";
 

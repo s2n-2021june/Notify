@@ -1,4 +1,8 @@
 package in.sel2in.ftl.notify;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * table needs to be normalised only for quick sample not prod ready
@@ -12,6 +16,10 @@ package in.sel2in.ftl.notify;
  *   `when` DateTime DEFAULT NULL,
  *   event_name varchar(30) DEFAULT NULL,
  *   PRIMARY KEY (id)*/
+
+@Service
 public class NodeInfo {
+    @Value("${local.server.port}")
+    private String serverPort;
     private long id;//
 }
