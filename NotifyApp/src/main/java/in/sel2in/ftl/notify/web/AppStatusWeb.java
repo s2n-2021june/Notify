@@ -34,6 +34,11 @@ public class AppStatusWeb {
         return ResponseEntity.ok(appStatusRepository.findAll());
     }
 
+    @GetMapping("/allOfAppId")
+    public ResponseEntity<List<AppStatus>> findAllOfAppId(@RequestParam String appid) {
+        return ResponseEntity.ok(appStatusService.findAppStatusWithAppId(appid));
+    }
+
     @GetMapping("/dateBetween")
     public ResponseEntity<List<AppStatus>> dateB(Date from, Date to) {
         return ResponseEntity.ok(appStatusService.findAppStatusBetweenDates(from, to));
