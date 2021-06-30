@@ -1,4 +1,4 @@
-package in.sel2in.ftl.notify.dao.doc.conf;
+package in.sel2in.ftl.notify.model.doc.conf;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;

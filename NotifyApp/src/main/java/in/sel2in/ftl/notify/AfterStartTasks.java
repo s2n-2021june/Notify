@@ -8,9 +8,13 @@ import javax.annotation.PostConstruct;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 @Service
 public class AfterStartTasks {
+    private static final Logger logger = LogManager.getLogger(AfterStartTasks.class);
+    //Connection to Maria DB. Use this for Dao.
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -18,7 +22,7 @@ public class AfterStartTasks {
     @PostConstruct
     private void runAfterSpringInit() {
         try {
-            System.out.println("Starting run after " + new Date() + ", jdbcTemplate " + jdbcTemplate);
+            logger.traceEntry ("Starting run after {}, jdbcTemplate {}", new Date(), jdbcTemplate);
             String sql = "select count(*) FROM App_node_health";
             int cnt = jdbcTemplate.queryForObject(sql, Integer.class) - 2;
             cnt = cnt < 0 ? 0 : cnt;

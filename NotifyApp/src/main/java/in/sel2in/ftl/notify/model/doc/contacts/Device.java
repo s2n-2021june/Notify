@@ -1,4 +1,4 @@
-package in.sel2in.ftl.notify.dao.contacts;
+package in.sel2in.ftl.notify.model.doc.contacts;
 
 import java.util.List;
 

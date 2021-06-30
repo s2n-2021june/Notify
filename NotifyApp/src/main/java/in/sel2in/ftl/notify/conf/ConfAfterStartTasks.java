@@ -1,9 +1,8 @@
 package in.sel2in.ftl.notify.conf;
 
-import in.sel2in.ftl.notify.dao.doc.conf.AppStatus;
+import in.sel2in.ftl.notify.model.doc.conf.AppStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;

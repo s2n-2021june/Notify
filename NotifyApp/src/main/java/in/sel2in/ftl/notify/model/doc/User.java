@@ -1,12 +1,11 @@
-package in.sel2in.ftl.notify.dao;
-
-import org.springframework.web.bind.annotation.PathVariable;
+package in.sel2in.ftl.notify.model.doc;
 
 import java.util.Objects;
-
+import org.springframework.data.annotation.Id;
 public class User {
 
-    
+    @Id
+    private String id;
     private String firstname;
     private String lastName; 
     private String email1;

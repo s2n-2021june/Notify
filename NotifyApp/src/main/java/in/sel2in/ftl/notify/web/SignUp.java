@@ -1,50 +1,48 @@
 package in.sel2in.ftl.notify.web;
 
-import in.sel2in.ftl.notify.dao.User;
+import in.sel2in.ftl.notify.model.doc.Response;
+import in.sel2in.ftl.notify.model.doc.User;
+import in.sel2in.ftl.notify.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.xml.ws.Response;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping(value = "/v1/users/signup", produces = "application/json")
+
 public class SignUp {
 
-    //temp code TODO replace with DAO
-    static private final Map<String, User> tempUserDb = new HashMap<>();
+    @Autowired
+    private UserService userService;
 
-    @GetMapping ("/signup/s1/{firstname}/{lastName}/{email}/{phone1}/{phone1CountryCode}/{phone2}/{phone2CountryCode}/{pwd}/{pwdRepeat}")
-    @ResponseBody
-    public ResponseEntity<GenericResponse> signUp1(@PathVariable String firstname, @PathVariable String lastName, @PathVariable String email,
+    @GetMapping ("/signup1/{firstname}/{lastName}/{email}/{phone1}/{phone1CountryCode}/{phone2}/{phone2CountryCode}/{pwd}/{pwdRepeat}")
+    public ResponseEntity<Response> signUp1(@PathVariable String firstname, @PathVariable String lastName, @PathVariable String email,
                                                    @PathVariable String phone1, @PathVariable String phone1CountryCode,
                                                    @PathVariable String phone2, @PathVariable String phone2CountryCode,
                                                    @PathVariable String pwd,
                                                    @PathVariable String pwdRepeat){
 
-        User user = new User(firstname, lastName, email, null, phone1, phone1CountryCode,phone2, phone2CountryCode,pwd);
-        String key = user.getEmail1() + ";" + user.getPhone1CountryCode() + "-" + user.getPhone1();
-        tempUserDb.put(key, user);
-        System.out.println("signUp1 key " + key + ",\n User : " + user + "\n ****\n");
 
-        GenericResponse rsp = new GenericResponse("ok added " + key + " User : " + user, null, null);
-        ResponseEntity <GenericResponse> rspe = ResponseEntity.ok(rsp);
+        Response rsp = userService.signUpUser(firstname, lastName, email, null, phone1, phone1CountryCode, phone2, phone2CountryCode, pwd, pwdRepeat);
+        System.out.println("signUp1 user " + rsp.getObj() + ", msg " + rsp.getMsg());
+        ResponseEntity <Response> rspe = ResponseEntity.ok(rsp);
         return rspe;
     }
 
+    @RequestMapping(value = "/signup2", method = RequestMethod.POST, produces="application/json", consumes="application/json")
+    public ResponseEntity<Response> signup(@RequestBody User user){
+        String pwdRepeat = user.getPwd();
+        System.out.println("postTest user :" + user + ". ");
+        return ResponseEntity.ok(userService.signUpUser(user, pwdRepeat));
 
-    @GetMapping ("/signup/s1/list")
-    @ResponseBody
-    public ResponseEntity<Set> users(){
-        return ResponseEntity.ok( tempUserDb.entrySet());
+        /* String name,@RequestAttribute  String email,@RequestAttribute  String pwd){
+        System.out.println("Math Quiz web user add name :" + name + " , eml " + email);
+        Response rsp = userService.addOrUpdate(name, email, pwd);
+        return ResponseEntity.ok(rsp);
+        */
     }
+
+
+
 }
 

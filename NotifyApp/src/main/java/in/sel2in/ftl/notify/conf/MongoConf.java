@@ -7,12 +7,15 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
 @Configuration
+@EnableMongoRepositories(basePackages = "in.sel2in.ftl.notify.dao.repos")
+
 public class MongoConf extends AbstractMongoClientConfiguration {
 
     @Override
@@ -33,6 +36,6 @@ public class MongoConf extends AbstractMongoClientConfiguration {
 
     @Override
     public Collection getMappingBasePackages() {
-        return Arrays.asList("in.sel2in.ftl.notify.dao.contacts", "in.sel2in.ftl.notify.dao.doc.conf");
+        return Arrays.asList("in.sel2in.ftl.notify.dao.doc");//Don't need two entries all are now under dao.doc
     }
 }
