@@ -1,0 +1,6 @@
+docker build --build-arg JAR_FILE=build/libs/\*.jar -t s2n/notify_app1 .
+
+docker run -p 8080:8080 s2n/notify_app1
+
+
+docker run -ti --entrypoint /bin/sh s2n/notify_app1
