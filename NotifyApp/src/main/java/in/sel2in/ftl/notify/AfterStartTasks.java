@@ -52,8 +52,9 @@ public class AfterStartTasks {
                 s1 = m.get("id");
             }
             System.out.println("\nRow start " + s1 + ":");
-            for (String key : m.keySet())
+            for (String key : m.keySet()) {
                 System.out.println("Key " + key + ", value :" + m.get(key) + ".");
+            }
 
         }
 
